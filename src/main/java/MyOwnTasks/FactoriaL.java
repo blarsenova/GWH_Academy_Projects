@@ -1,4 +1,4 @@
-package org.example;
+package MyOwnTasks;
 
 public class FactoriaL {
 
