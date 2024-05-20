@@ -37,7 +37,7 @@ public class P1_Prjct {
             System.out.println(e);
         }
     }
-
+ //I may need to brush up the code..
     public byte[] compress(byte[] data) {
         try (ByteArrayOutputStream out = new ByteArrayOutputStream();
              DeflaterOutputStream deflater = new DeflaterOutputStream(out)) {
