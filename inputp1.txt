@@ -1,0 +1,1 @@
+Ok, let's try to compress and compare input and output files
