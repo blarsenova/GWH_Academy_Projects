@@ -1,22 +1,38 @@
 package CS_Programming;
 
+
 public class Palindrome_Array {
 
-public static void (String args[]){
+    // Method: Check if an array is a palindrome
+    public static boolean isPalindrome(int[] array) {
+        int left = 0;
+        int right = array.length - 1;
 
-    bool isPalindrome(int array[], int size) {
-        int start = 0;
-        int end = size - 1;
-        while (start < end) {
-            if (array[start] != array[end]) {
-                return false;
+        while (left < right) {
+            // Compare elements from both ends of the array
+            if (array[left] != array[right]) {
+                return false; // Array is not a palindrome
             }
-            start++;
-            end--;
+            left++;
+            right--;
         }
-        return true;
+        return true; // Array is a palindrome
     }
 
+    // Main method: Test array for palindrome
+    public static void main(String[] args) {
+        // Example array for demonstration
+        int[] palindromeArray = {35, 8, 53, 7, 53, 8, 35};
 
+        // Call the isPalindrome method
+        boolean isPalindromic = isPalindrome(palindromeArray);
+
+        // Print the result
+        if (isPalindromic) {
+            System.out.println("The array is a palindrome.");
+        } else {
+            System.out.println("The array is not a palindrome.");
+        }
     }
+
 }
