@@ -1,5 +1,9 @@
 package CS_Programming;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class DuplicatesInArray {
     public static void main(String[] args) {
         // Example array with duplicates
@@ -20,7 +24,8 @@ public class DuplicatesInArray {
         for (int num : array) {
             uniqueSet.add(num);
         }
-
+        // Convert the HashSet to an array
+        return uniqueSet.stream().mapToInt(Integer::intValue).toArray();
 
     }
 
