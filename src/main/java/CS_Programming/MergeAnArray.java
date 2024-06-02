@@ -15,6 +15,18 @@ public class MergeAnArray {
             System.out.print(i + " ");
         }
     }
+    public static int[] mergeArrays(int[] array1, int[] array2) {
+        // Create a new array with size equal to the sum of the sizes of the two arrays
+        int[] mergedArray = new int[array1.length + array2.length];
 
+        // Copy elements from the first array into the merged array
+        System.arraycopy(array1, 0, mergedArray, 0, array1.length);
+
+        // Copy elements from the second array into the merged array
+        System.arraycopy(array2, 0, mergedArray, array1.length, array2.length);
+
+        // Return the merged array
+        return mergedArray;
+    }
 
 }
