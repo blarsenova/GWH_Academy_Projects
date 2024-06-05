@@ -1,9 +1,2 @@
-1
-2
-3
-4
-5
-6
-7
-8
-9
+This is captain speaking in beautiful Sunday morning.
+The weather outside is 80 degrees and local time is 8am.
