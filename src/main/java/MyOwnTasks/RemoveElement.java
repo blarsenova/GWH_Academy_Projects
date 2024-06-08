@@ -6,5 +6,7 @@ public class RemoveElement {
         Solution solution = new Solution();
         int[] nums = {3, 2, 2, 3};
         int val = 3;
+
+        //test
     }
 }
