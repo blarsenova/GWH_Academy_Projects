@@ -28,10 +28,10 @@ public class LastWord {
         LastWord cs = new LastWord();
 
         // Test cases
-        System.out.println(cs.lengthOfLastWord("Hello World")); // Output: 5
-        System.out.println(cs.lengthOfLastWord("   fly me   to   the moon  ")); // Output: 4
-        System.out.println(cs.lengthOfLastWord("luffy is still joyboy")); // Output: 6
-        System.out.println(cs.lengthOfLastWord("a")); // Output: 1
+        System.out.println(cs.lengthOfLastWord("ABSC DE")); // Output: 5
+        System.out.println(cs.lengthOfLastWord("It's Friday")); // Output: 4
+        System.out.println(cs.lengthOfLastWord(" Cool down")); // Output: 6
+        System.out.println(cs.lengthOfLastWord("C!")); // Output: 1
         System.out.println(cs.lengthOfLastWord("   ")); // Output: 0
     }
 
