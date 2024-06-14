@@ -1,6 +1,5 @@
 package MyOwnTasks;
-import java.util.HashMap;
-import java.util.Map;
+
 public class FibonacciWithRecursionMemo {
     private static long[] fibonacciCache;
     // Method to calculate Fibonacci number using recursion with memoization
@@ -18,7 +17,11 @@ public class FibonacciWithRecursionMemo {
     public static void main(String[] args){
             int n = 100;
             fibonacciCache = new long[n + 1];
-            System.out.print(fibonacci(n));
+
+            for (int i=0; i<=n; i++){
+                System.out.print(fibonacci(i) +" ");
+            }
+
     }
 }
 
