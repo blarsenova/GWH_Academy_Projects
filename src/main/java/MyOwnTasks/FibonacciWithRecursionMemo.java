@@ -1,5 +1,4 @@
 package MyOwnTasks;
-
 public class FibonacciWithRecursionMemo {
     private static long[] fibonacciCache;
     // Method to calculate Fibonacci number using recursion with memoization
@@ -15,7 +14,7 @@ public class FibonacciWithRecursionMemo {
         return nthFibNumber;
     }
     public static void main(String[] args){
-            int n = 100;
+            int n = 7;
             fibonacciCache = new long[n + 1];
 
             for (int i=0; i<=n; i++){
