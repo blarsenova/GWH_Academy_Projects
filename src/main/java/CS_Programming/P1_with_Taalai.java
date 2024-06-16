@@ -11,7 +11,10 @@ public class P1_with_Taalai {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
             ObjectOutputStream writer= new ObjectOutputStream(new FileOutputStream(outputFile));
+          ByteArrayOutputStream codeToText =  new ByteArrayOutputStream();
             Map<String, Short> wordToCode =new HashMap<>();
+            Map<Short, String> codeToWords = new HashMap<>();
+
             short codeCounter =0;
             String line;
             while ((line = reader.readLine()) != null) {
@@ -20,6 +23,7 @@ public class P1_with_Taalai {
                    Short existingCode = wordToCode.get(w);
                    if (existingCode==null){
                        wordToCode.put(w, codeCounter);
+                       codeToWords.put(codeCounter,w);
                        codeCounter++;
                        if (codeCounter==Short.MAX_VALUE){
                            throw new CompressionException();
