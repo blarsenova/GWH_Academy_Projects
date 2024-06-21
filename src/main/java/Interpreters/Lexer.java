@@ -133,7 +133,7 @@ public class Lexer implements Iterable<Lexer.Token> {
 
     @Override
     public Iterator<Token> iterator() {
-        return null;
+        return tokens.iterator();
     }
 
     static class Token {
