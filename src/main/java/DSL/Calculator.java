@@ -14,7 +14,7 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
         String rawexpression = scanner.nextLine();
         String[] xpression = rawexpression.split(" ");
-        if (xpression.length!=3) {
+        if (xpression.length != 3) {
             throw new IllegalArgumentException("Input doesn't satisfy language rules " + rawexpression);
         }
 
@@ -27,7 +27,7 @@ public class Calculator {
         } catch (Exception e) {
             e.printStackTrace();
 
-    }
+        }
 
         scanner.close();
     }
@@ -38,8 +38,15 @@ public class Calculator {
                 return operand1 + operand2;
             case "SUB":
                 return operand1 - operand2;
+            case "MULT":
+                return operand1 * operand2;
+            case "DIV":
+                if (operand1==0 || operand2==0){
+                    System.out.println("Number cannot be 0");
+                } return operand1 / operand2;
+
             default:
-                throw new UnsupportedOperationException("Unsupported operation " +operator);
+                throw new UnsupportedOperationException("Unsupported operation " + operator);
 
         }
     }
