@@ -19,6 +19,7 @@ public class Lexer {
     }
 
     private void tokenize() {
+
         while (currentCount < input.length()) {
             char ch = input.charAt(currentCount);
             switch (ch) {
@@ -44,16 +45,43 @@ public class Lexer {
                     break;
                 case '%':
                     tokens.add(new Token(TokenType.REFERENCES, readReference()));
+                default:
+                    if (isDigit(ch)) {
+                        tokens.add(new Token(TokenType.NUMBER, readNumbers());
 
-
-
+                    } else if (isAlpha(ch)) {
+                        String identifier = readIdentifier();
+                        tokens.add(new Token(deriveTokenType(identifier), identifier));
+                    }
             }
-
         }
+    }
+
+    private String readIdentifier() {
+
+        StringBuilder builder = new StringBuilder();
+        while (currentCount < input.length() && isAlphaNumberic(input.charAt(currentCount))) {
+            builder.append(input.charAt(currentCount));
+            currentCount++;
+        }
+
+        return builder.toString();
 
     }
 
+    private String readNumbers() {
+
+        StringBuilder builder = new StringBuilder();
+        while (currentCount < input.length() && isDigit(input.charAt(currentCount))) {
+            builder.append(input.charAt(currentCount));
+            currentCount++;
+        }
+
+        return builder.toString();
+    }
+
     private String readReference() {
+
         StringBuilder builder = new StringBuilder();
         currentCount++;
         while (currentCount < input.length() && isAlphaNumberic(input.charAt(currentCount))) {
@@ -64,10 +92,20 @@ public class Lexer {
     }
 
     private boolean isAlphaNumberic(char c) {
-        return false;
+        return isAlpha(c) | isDigit(c);
+
+    }
+
+    private boolean isDigit(char c) {
+        return '0' <= c && c <= '9';
+    }
+
+    private boolean isAlpha(char c) {
+        return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
     }
 
     private String readtoString() {
+
         StringBuilder builder = new StringBuilder();
         currentCount++;
         while (currentCount < input.length() && input.charAt(currentCount) != '"') {
@@ -78,6 +116,7 @@ public class Lexer {
     }
 
     static class Token {
+
         final TokenType type;
         final String value;
 
