@@ -14,14 +14,14 @@ public class Lexer {
     public Lexer(String input) {
         this.input = input;
         this.tokens = new ArrayList<Token>();
-        this.currentCount=0;
+        this.currentCount = 0;
         tokenize();
     }
 
     private void tokenize() {
-        while (currentCount<input.length()){
+        while (currentCount < input.length()) {
             char ch = input.charAt(currentCount);
-            switch (ch){
+            switch (ch) {
                 case ' ':
                 case '\t':
                 case '\n':
@@ -29,14 +29,34 @@ public class Lexer {
                     currentCount++;
                     break;
                 case '=':
-                    tokens.add(new Token(ASSIGNMENT, "="));
-
+                    tokens.add(new Token(TokenType.ASSIGNMENT, "=");
+                    currentCount++;
+                    break;
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                    tokens.add(new Token(TokenType.OPERATOR, Character.toString(ch)));
+                    currentCount++;
+                    break;
+                case '"':
+                    tokens.add(new Token(STRING, readtoString()));
 
 
             }
 
         }
 
+    }
+
+    private String readtoString() {
+        StringBuilder builder = new StringBuilder();
+        currentCount++;
+        while (currentCount < input.length() && input.charAt(currentCount) != '"') {
+            builder.append(input.charAt(currentCount));
+            currentCount++;
+        }
+        return null;
     }
 
     static class Token {
@@ -51,12 +71,13 @@ public class Lexer {
         @Override
         public String toString() {
             return "Token{" +
-                    "type=" + type +
-                    ", value='" + value + '\'' +
-                    '}';
+                   "type=" + type +
+                   ", value='" + value + '\'' +
+                   '}';
         }
     }
+
     enum TokenType {
-        CONFIG, UPDATE, COMPUTE, SHOW, CONFIGS, STRING, NUMBER, IDENTIFIER, ASSIGNMENT, REFERENCES
+        CONFIG, UPDATE, COMPUTE, SHOW, CONFIGS, STRING, NUMBER, IDENTIFIER, ASSIGNMENT, REFERENCES, OPERATOR
     }
 }
