@@ -22,7 +22,16 @@ public class Lexer {
         while (currentCount<input.length()){
             char ch = input.charAt(currentCount);
             switch (ch){
-                case
+                case ' ':
+                case '\t':
+                case '\n':
+                case '\r':
+                    currentCount++;
+                    break;
+                case '=':
+                    tokens.add(new Token(ASSIGNMENT, "="));
+
+
 
             }
 
