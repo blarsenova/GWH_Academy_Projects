@@ -41,12 +41,30 @@ public class Lexer {
                     break;
                 case '"':
                     tokens.add(new Token(STRING, readtoString()));
+                    break;
+                case '%':
+                    tokens.add(new Token(TokenType.REFERENCES, readReference()));
+
 
 
             }
 
         }
 
+    }
+
+    private String readReference() {
+        StringBuilder builder = new StringBuilder();
+        currentCount++;
+        while (currentCount < input.length() && isAlphaNumberic(input.charAt(currentCount))) {
+            builder.append(input.charAt(currentCount));
+            currentCount++;
+        }
+        return builder.toString();
+    }
+
+    private boolean isAlphaNumberic(char c) {
+        return false;
     }
 
     private String readtoString() {
@@ -56,7 +74,7 @@ public class Lexer {
             builder.append(input.charAt(currentCount));
             currentCount++;
         }
-        return null;
+        return builder.toString();
     }
 
     static class Token {
