@@ -1,9 +1,10 @@
 package Interpreters;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class Lexer {
+public class Lexer implements Iterable<Lexer.Token> {
 
 
     private final List<Token> tokens;
@@ -30,7 +31,7 @@ public class Lexer {
                     currentCount++;
                     break;
                 case '=':
-                    tokens.add(new Token(TokenType.ASSIGNMENT, "=");
+                    tokens.add(new Token(TokenType.ASSIGNMENT, "="));
                     currentCount++;
                     break;
                 case '+':
@@ -41,20 +42,35 @@ public class Lexer {
                     currentCount++;
                     break;
                 case '"':
-                    tokens.add(new Token(STRING, readtoString()));
+                    tokens.add(new Token(TokenType.STRING, readtoString()));
                     break;
                 case '%':
                     tokens.add(new Token(TokenType.REFERENCES, readReference()));
                 default:
                     if (isDigit(ch)) {
-                        tokens.add(new Token(TokenType.NUMBER, readNumbers());
+                        tokens.add(new Token(TokenType.NUMBER, readNumbers()));
 
                     } else if (isAlpha(ch)) {
                         String identifier = readIdentifier();
                         tokens.add(new Token(deriveTokenType(identifier), identifier));
+                    } else {
+                        throw new LexerException ("Unsupported character: "+ ch);
                     }
             }
         }
+    }
+
+    private TokenType deriveTokenType(String identifier) {
+        switch (identifier){
+            case "config":
+                return TokenType.CONFIG;
+            case "update":
+                return  TokenType.UPDATE;
+            default:
+                return TokenType.IDENTIFIER;
+
+        }
+
     }
 
     private String readIdentifier() {
@@ -113,6 +129,11 @@ public class Lexer {
             currentCount++;
         }
         return builder.toString();
+    }
+
+    @Override
+    public Iterator<Token> iterator() {
+        return null;
     }
 
     static class Token {
