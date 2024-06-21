@@ -5,6 +5,14 @@ import java.util.ArrayList;
 public class RunningClass {
 
     public static void main(String[] args) {
+
+        String input = """
+                configs "num_users"= 300
+                update "num_users" = 55
+                """;
+
+        Lexer lexer = new Lexer(input);
+
         ArrayList<Lexer.Token> tokens = new ArrayList<>();
         tokens.add(new Lexer.Token(Lexer.TokenType.CONFIG, "Configs"));
         tokens.add(new Lexer.Token(Lexer.TokenType.STRING, "num users"));
