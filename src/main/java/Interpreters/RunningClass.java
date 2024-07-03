@@ -9,8 +9,11 @@ public class RunningClass {
     public static void main(String[] args) {
 
         String input = """
+                config "test one_1" = 123 "test xyz" - zee
                 config "num_users"= 300
+                config "num_requests"= 152
                 update "num_users" = 55
+                compute "result" = %num_users + %num_requests
                 """;
 
         Lexer lexer1 = new Lexer(input);
